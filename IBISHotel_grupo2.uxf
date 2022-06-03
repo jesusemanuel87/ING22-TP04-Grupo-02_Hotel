@@ -1,0 +1,171 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>656</x><y>744</y><w>208</w><h>272</h></coordinates><panel_attributes>Habitacion
+--
+
+   - idHabitacion: int
+   - piso: int
+   - libre = 0: int
+   - categoria: Categoria
+
+--
+
++ Habitacion()
++ Habitacion(int: idHabitacion, int: piso, 
+   Categoria: categoria)
+
++ getIdHabitacion(): int
++ getPiso(): int
++ isLibre(): int
++ getCategoria(): Categoria
+
++ setPiso(piso): void
++ ocupar(): void
++ desocupar(): void
++ setCategoria(Categoria): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>984</x><y>744</y><w>208</w><h>312</h></coordinates><panel_attributes>Categoria
+--
+
+   - idCategoria: int
+   - nombreCategoria: String
+   - precio: double
+   - capacidad: int
+   - tipo: String
+
+--
+
++ Categoria()
++ Categoria(int: idCategoria, 
+   String: nombreCategoria, double: precio,
+   int: capacidad,  String: tipo)
+
++ getIdCategoria(): int
++ getNombreCategoria(): String
++ getPrecio(): double
++ getCapacidad(): int
++ getTipo(): String
+
++ setNombreCategoria(nombre): void
++ setPrecio(precio): void
++ setCapacidad(capacidad): void
++ setTipo(tipo): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>744</y><w>200</w><h>344</h></coordinates><panel_attributes>Huesped
+--
+
+   - idHuesped: int
+   - nombre: String
+   - DNI: String
+   - domicilio: String
+   - correo: String
+   - celular: String
+
+--
+
++ Huesped()
++ Huesped(int: idHuesped, String: nombre, 
+   String: DNI, String: domicilio, 
+   String: correo, String: celular)
+
++ getIdHuesped: int
++ getNombre: String
++ getDNI: String
++ getDomicilio: String
++ getCorreo: String
++ getCelular: String
+
++ setNombre(nombre): void
++ setDNI(DNI): void
++ setDomicilio(domicilio): void
++ setCorreo(correo): void
++ setCelular(celular):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>312</x><y>744</y><w>240</w><h>480</h></coordinates><panel_attributes>Reserva
+--
+
+   - idReserva: int
+   - huesped: Huesped
+   - habitacion: Habitacion
+   - fechaCheckIn: LocalDate
+   - fechaCheckOut: LocalDate
+   - personas: int
+   - dias: int
+   - monto: double
+   - cancelado=0: int
+
+--
+
++ Reserva()
++ Reserva(int: idReserva, Huesped: huesped,
+   Habitacion: habitacion, LocalDate: fechaCheckIn,
+   LocalDate: fechaCheckOut, int: personas, int: dias,
+   double: monto, int: cancelado)
+
++ getIdReserva(): int
++ getHuesped(): Huesped
++ getHabitacion(): Habitacion
++ getFechaCheckIn(): LocalDate
++ getFechaCheckOut(): LocalDate
++ getPersonas(): int
++ getDias(): int
++ getMonto(): double
++ isCancelado(): int
+
++ setHuesped(huesped): void
++ setHabitacion(habitacion): void
++ setFechaCheckIn(fechaCheckiIn): void
++ setFechaCheckOut(fechaCheckOut): void
++ setPersonas(personas): void
++ setDias(int: dias): void
++ setMonto(double: monto): void
+
++ cancelarReserva(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1032</x><y>1104</y><w>112</w><h>104</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+TipoDeHabitacion
+--
+
+   Estándar
+   Doble
+   Triple
+   Suit
+
+bg=light_gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>1048</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>800</y><w>136</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1
+&lt; Realiza</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>856</x><y>808</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+Pertenece a &gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>808</y><w>128</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>48</y><w>576</w><h>152</h></coordinates><panel_attributes>&lt;&lt;boundary&gt;&gt;
+IU_Reserva
+--
+
++ validarDisponibilidad(LocalDate: fechaCheckIn, LocalDate: fechaCheckOut, int: personas): Habitacion
++ mostrarHabitaciones(Array&lt;Habitacion&gt;: habitacionesDisponibles): void
++ validarReserva(Habitacion: habitacion, String: nombre, String: DNI, String: direccion, String: correo, String: celular): Reserva
++ ordenReserva(): void
++ buscarReserva(int: idHabitacion=-1, int: idHuesped=-1): Reserva
++ solicitarPago(Reserva: reserva): void
++ validarPago(): String
++ mostrarConfirmacion</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>312</y><w>528</w><h>224</h></coordinates><panel_attributes>ControlReserva
+--
+
++ buscarCategoria(personas): Cateegoria
++ habitacionesLibres(categoria): Array&lt;Habitacion&gt;
++ obtenerHuesped(String: nombre, String: DNI, String: domicilio, String: correo, String: celular): Huesped
++ calcularMonto(Categoria: categoria, int: dias): double
++ ocuparHabitacion(Habitacion: habitacion): void
+
++ buscarHabitacion(int: idHabitacion): Habitacion
++ buscarHuesped(int: idHuesped): Huesped
++ reservasHabitacionActivas(Habitacion: habitacion): Array&lt;Reserva&gt;
++ ReservasHuespedActivas(Huesped: huesped): Array&lt;Reserva&gt;
++ buscarReserva(Habitacion: habitacion, Huesped: huesped): Reserva
++ controlFecha(reserva): int
++ aplicarRecargo(): void
++ finReserva(Habitacion: habitacion): void
++ liberarHabitacion(Habitacion: habitacion):</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>192</y><w>32</w><h>136</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>96</x><y>472</y><w>240</w><h>288</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n</panel_attributes><additional_attributes>280;10;10;10;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>424</x><y>528</y><w>40</w><h>232</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n</panel_attributes><additional_attributes>10;10;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>528</y><w>40</w><h>232</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n</panel_attributes><additional_attributes>10;10;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>448</y><w>280</w><h>312</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n</panel_attributes><additional_attributes>10;10;310;10;310;370</additional_attributes></element></diagram>

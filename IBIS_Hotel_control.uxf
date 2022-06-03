@@ -1,0 +1,95 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>53</x><y>73</y><w>260</w><h>340</h></coordinates><panel_attributes>ControlHabitacion
+--
+
++ habitacionesLibres(Categoria: categoria)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>453</x><y>73</y><w>400</w><h>190</h></coordinates><panel_attributes>Categoria
+--
+
++ filtrar(LocalDate: fechaCheckIn, 
+   LocalDate: fechaCheckOut, int: cantidadPersonas)
++ </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>703</y><w>250</w><h>430</h></coordinates><panel_attributes>Huesped
+--
+
+   - idHuesped: int
+   - nombre: String
+   - DNI: String
+   - domicilio: String
+   - correo: String
+   - celular: String
+
+--
+
++ Huesped()
++ Huesped(int: idHuesped, String: nombre, 
+   String: DNI, String: domicilio, 
+   String: correo, String: celular)
+
++ getIdHuesped: int
++ getNombre: String
++ getDNI: String
++ getDomicilio: String
++ getCorreo: String
++ getCelular: String
+
++ setNombre(nombre): void
++ setDNI(DNI): void
++ setDomicilio(domicilio): void
++ setCorreo(correo): void
++ setCelular(celular):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>33</x><y>533</y><w>300</w><h>600</h></coordinates><panel_attributes>Reserva
+--
+
+   - idReserva: int
+   - huesped: Huesped
+   - habitacion: Habitacion
+   - fechaCheckIn: LocalDate
+   - fechaCheckOut: LocalDate
+   - personas: int
+   - dias: int
+   - monto: double
+   - cancelado=0: int
+
+--
+
++ Reserva()
++ Reserva(int: idReserva, Huesped: huesped,
+   Habitacion: habitacion, LocalDate: fechaCheckIn,
+   LocalDate: fechaCheckOut, int: personas, int: dias,
+   double: monto, int: cancelado)
+
++ getIdReserva(): int
++ getHuesped(): Huesped
++ getHabitacion(): Habitacion
++ getFechaCheckIn(): LocalDate
++ getFechaCheckOut(): LocalDate
++ getPersonas(): int
++ getDias(): int
++ getMonto(): double
++ isCancelado(): int
+
++ setHuesped(huesped): void
++ setHabitacion(habitacion): void
++ setFechaCheckIn(fechaCheckiIn): void
++ setFechaCheckOut(fechaCheckOut): void
++ setPersonas(personas): void
++ calcDias(): void
++ calcMonto(): void
+
++ cancelarReserva(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>643</x><y>503</y><w>140</w><h>130</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+TipoDeHabitacion
+--
+
+   Estándar
+   Doble
+   Triple
+   Suit
+
+bg=light_gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>703</x><y>253</y><w>30</w><h>270</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>323</x><y>733</y><w>300</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+&lt; Realiza</panel_attributes><additional_attributes>10;20;280;20</additional_attributes></element><element><id>Relation</id><coordinates><x>303</x><y>153</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+Pertenece a &gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>173</x><y>403</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element></diagram>
